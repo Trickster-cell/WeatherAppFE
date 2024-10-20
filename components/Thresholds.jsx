@@ -116,7 +116,7 @@ const Thresholds = () => {
               </svg>
             </button>
             <div
-              class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse"
+              className="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse"
               style={{ left: "5em", bottom: "1em" }}
             >
               {Icon}
@@ -153,7 +153,7 @@ const Thresholds = () => {
               </svg>
             </button>
           </div>
-          <div class=" relative bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
+          <div className=" relative bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse">
             <span>{param}</span>
           </div>
         </div>

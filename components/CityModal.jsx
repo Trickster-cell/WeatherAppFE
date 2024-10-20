@@ -152,7 +152,7 @@ const CityModal = (props) => {
                   </svg>
                 </button>
               </div>
-              <p class="text-sm text-gray-500 px-2">
+              <p className="text-sm text-gray-500 px-2">
                 Subscribe to our weather alert system to get real-time updates
                 for your chosen cities when your specified weather conditions
                 are met. Stay prepared with timely alerts tailored to your

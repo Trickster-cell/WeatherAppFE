@@ -143,16 +143,16 @@ const Navbar = (props) => {
                 </select>
               </form>
             </li>
-            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
               <button
                 type="button"
-                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                 id="user-menu-button"
                 aria-expanded="false"
                 data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom"
               >
-                <span class="sr-only">Open user menu</span>
+                <span className="sr-only">Open user menu</span>
                 {loggedIn ? (
                   <NameInitialsAvatar
                     name={userDetails.name}
@@ -177,24 +177,24 @@ const Navbar = (props) => {
                 )}
               </button>
               <div
-                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                 id="user-dropdown"
               >
                 {loggedIn && (
-                  <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 dark:text-white">
+                  <div className="px-4 py-3">
+                    <span className="block text-sm text-gray-900 dark:text-white">
                       {userDetails.name}
                     </span>
-                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
                       {userDetails.email}
                     </span>
                   </div>
                 )}
-                <ul class="py-2" aria-labelledby="user-menu-button">
+                <ul className="py-2" aria-labelledby="user-menu-button">
                   {!loggedIn && (
                     <li>
                       <p
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                         onClick={toggleModal}
                       >
                         Login
@@ -206,7 +206,7 @@ const Navbar = (props) => {
                       <li>
                         <p
                           // href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
                           onClick={cityToggleModal}
                         >
                           Set Alerts
@@ -215,7 +215,7 @@ const Navbar = (props) => {
                       <li>
                         <p
                           // href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
                           onClick={handleLogout}
                         >
                           Logout
@@ -228,13 +228,13 @@ const Navbar = (props) => {
               <button
                 data-collapse-toggle="navbar-user"
                 type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-user"
                 aria-expanded="false"
               >
-                <span class="sr-only">Open main menu</span>
+                <span className="sr-only">Open main menu</span>
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
