@@ -52,7 +52,7 @@ const ButtonGroup = () => {
               <p className="w-40">
                 Daily data is updated automatically every 20 minutes.
               </p>
-              <div class="tooltip-arrow" data-popper-arrow></div>
+              <div className="tooltip-arrow" data-popper-arrow></div>
             </div>
           </div>
         </li>
@@ -98,7 +98,7 @@ const ButtonGroup = () => {
               <p className="w-40">
                 The historical data summary is updated every day at UTC 0:00.
               </p>
-              <div class="tooltip-arrow" data-popper-arrow></div>
+              <div className="tooltip-arrow" data-popper-arrow></div>
             </div>
           </div>
         </li>

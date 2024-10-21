@@ -37,6 +37,11 @@ const Navbar = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [bgColor, setBgColor] = useState(getRandomColor());
 
+  const toggleLogin = (e) => {
+    e.preventDefault();
+    setLoggedIn(!loggedIn);
+  };
+
   useEffect(() => {
     enableDarkMode();
   }, []);
@@ -47,24 +52,30 @@ const Navbar = (props) => {
       const token = sessionStorage.getItem("token");
 
       // Make the API call with the Bearer token in the Authorization header
-      const api_call = await fetch("https://main-weather-server.onrender.com/auth/details", {
-        method: "GET", // Use GET method or whatever is appropriate for your endpoint
-        headers: {
-          "Content-Type": "application/json", // Set content type if necessary
-          Authorization: `Bearer ${token}`, // Include the token here
-        },
-      });
+      if (token) {
+        const api_call = await fetch(
+          "https://main-weather-server.onrender.com/auth/details",
+          {
+            method: "GET", // Use GET method or whatever is appropriate for your endpoint
+            headers: {
+              "Content-Type": "application/json", // Set content type if necessary
+              Authorization: `Bearer ${token}`, // Include the token here
+            },
+          }
+        );
 
-      // Check if the response is okay
-      if (!api_call.ok) {
-        console.error("HTTP error! Status:", api_call.status);
-        throw new Error("Failed to fetch user details.");
+        // Check if the response is okay
+        if (!api_call.ok) {
+          console.error("HTTP error! Status:", api_call.status);
+          throw new Error("Failed to fetch user details.");
+        }
+
+        // Parse the response data as JSON
+        const data = await api_call.json();
+        // console.log(data.user.subscribedCitys);
+        return data; // Return the data
       }
-
-      // Parse the response data as JSON
-      const data = await api_call.json();
-      // console.log(data.user.subscribedCitys);
-      return data; // Return the data
+      return []
     } catch (error) {
       console.error("Error fetching user details:", error);
       return null; // Return null or handle the error as needed
@@ -90,16 +101,16 @@ const Navbar = (props) => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <p className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="https://www.freeiconspng.com/uploads/weather-icon-png-2.png"
+            src="https://img.icons8.com/color/96/four-seasons.png"
             className="h-8"
             alt="Weather App Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Weather App
           </span>
-        </a>
+        </p>
         <button
           data-collapse-toggle="navbar-dropdown"
           type="button"
@@ -151,6 +162,7 @@ const Navbar = (props) => {
                 aria-expanded="false"
                 data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom"
+                // onClick={toggleLogin}
               >
                 <span className="sr-only">Open user menu</span>
                 {loggedIn ? (
@@ -226,10 +238,10 @@ const Navbar = (props) => {
                 </ul>
               </div>
               <button
-                data-collapse-toggle="navbar-user"
+                data-collapse-toggle="user-dropdown"
                 type="button"
                 className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-user"
+                aria-controls="user-dropdown"
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
