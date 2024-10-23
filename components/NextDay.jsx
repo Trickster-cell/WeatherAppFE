@@ -157,7 +157,7 @@ export default function NextDay({
       <div className="next-5-days__date">
         {date.slice(6, 10)}
         <div className="next-5-days__label">
-          {date.slice(0, 2)}/{parseInt(date.slice(3, 5))+1}
+          {date.slice(0, 2)}/{parseInt(date.slice(3, 5))}
         </div>
       </div>
 
