@@ -8,16 +8,19 @@ const LoginModal = (props) => {
     e.preventDefault();
     // console.log(credentials);
     try {
-      const response = await fetch("https://main-weather-server.onrender.com/auth/login", {
-        method: "POST", // Specify the HTTP method
-        headers: {
-          "Content-Type": "application/json", // Set the content type
-        },
-        body: JSON.stringify({
-          userEmail: credentials.email,
-          userPassword: credentials.password,
-        }), // Convert credentials to JSON
-      });
+      const response = await fetch(
+        "https://main-weather-server.onrender.com/auth/login",
+        {
+          method: "POST", // Specify the HTTP method
+          headers: {
+            "Content-Type": "application/json", // Set the content type
+          },
+          body: JSON.stringify({
+            userEmail: credentials.email,
+            userPassword: credentials.password,
+          }), // Convert credentials to JSON
+        }
+      );
 
       if (!response.ok) {
         // If the response is not okay, throw an error
@@ -31,6 +34,7 @@ const LoginModal = (props) => {
         sessionStorage.setItem("token", data.token); // Store the token
         toast.success("User Logged In Successfully");
         toggleModal();
+        window.location.reload();
       }
     } catch (error) {
       toast.error(`Error ${response.status}: Some error occured`);
