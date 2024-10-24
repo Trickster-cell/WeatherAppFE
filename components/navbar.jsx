@@ -45,6 +45,7 @@ const Navbar = (props) => {
   useEffect(() => {
     enableDarkMode();
   }, []);
+  const host = import.meta.env.VITE_SERVER_URL ||"https://main-weather-server.onrender.com";
 
   const getUserDetails = async () => {
     try {
@@ -54,7 +55,7 @@ const Navbar = (props) => {
       // Make the API call with the Bearer token in the Authorization header
       if (token) {
         const api_call = await fetch(
-          "https://main-weather-server.onrender.com/auth/details",
+          `${host}/auth/details`,
           {
             method: "GET", // Use GET method or whatever is appropriate for your endpoint
             headers: {

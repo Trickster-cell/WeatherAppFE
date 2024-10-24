@@ -5,11 +5,14 @@ const RegisterModal = (props) => {
   const { isModalOpen, toggleModal, toggleLogin, onChange, credentials } =
     props;
 
+    const host = import.meta.env.VITE_SERVER_URL ||"https://main-weather-server.onrender.com";
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(credentials);
     try {
-      const response = await fetch("https://main-weather-server.onrender.com/auth/signup", {
+      const response = await fetch(`${host}/auth/signup`, {
         method: "POST", // Specify the HTTP method
         headers: {
           "Content-Type": "application/json", // Set the content type

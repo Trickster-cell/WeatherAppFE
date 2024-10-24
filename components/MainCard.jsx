@@ -132,22 +132,24 @@ const MainCard = (props) => {
         return "CLEAR_DAY";
     }
   };
+  const host = import.meta.env.VITE_SERVER_URL ||"https://main-weather-server.onrender.com";
+
 
   const getWeather = async () => {
-    const api_call = await fetch("https://main-weather-server.onrender.com/weather/todayData");
+    const api_call = await fetch(`${host}/weather/todayData`);
     const data = await api_call.json();
     return data;
   };
 
   const getWeekWeather = async () => {
-    const api_call = await fetch("https://main-weather-server.onrender.com/weather/last7days");
+    const api_call = await fetch(`${host}/weather/last7days`);
     const data = await api_call.json();
     return data;
   };
 
   const getCurrentData = async () => {
     const api_call = await fetch(
-      "https://main-weather-server.onrender.com/weather/getCurrentData"
+      `${host}/weather/getCurrentData`
     );
     const data = await api_call.json();
     return data;

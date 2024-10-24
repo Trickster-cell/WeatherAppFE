@@ -4,23 +4,24 @@ import { toast } from "react-toastify";
 const LoginModal = (props) => {
   const { isModalOpen, toggleModal, toggleLogin, onChange, credentials } =
     props;
+  const host =
+    import.meta.env.VITE_SERVER_URL ||
+    "https://main-weather-server.onrender.com";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(credentials);
     try {
-      const response = await fetch(
-        "https://main-weather-server.onrender.com/auth/login",
-        {
-          method: "POST", // Specify the HTTP method
-          headers: {
-            "Content-Type": "application/json", // Set the content type
-          },
-          body: JSON.stringify({
-            userEmail: credentials.email,
-            userPassword: credentials.password,
-          }), // Convert credentials to JSON
-        }
-      );
+      const response = await fetch(`${host}/auth/login`, {
+        method: "POST", // Specify the HTTP method
+        headers: {
+          "Content-Type": "application/json", // Set the content type
+        },
+        body: JSON.stringify({
+          userEmail: credentials.email,
+          userPassword: credentials.password,
+        }), // Convert credentials to JSON
+      });
 
       if (!response.ok) {
         // If the response is not okay, throw an error

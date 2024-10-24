@@ -42,10 +42,12 @@ const CityModal = (props) => {
   const handleSaveChanges = async (e) => {
     e.preventDefault();
     // When saving, you can use `subscribedCitiesTemp` to update userDetails or make an API call
+    const host = import.meta.env.VITE_SERVER_URL ||"https://main-weather-server.onrender.com";
+    console.log(host)
     try {
       const token = sessionStorage.getItem("token");
       const response = await fetch(
-        "https://main-weather-server.onrender.com/auth/subscribeCities",
+        `${host}/auth/subscribeCities`,
         {
           method: "POST", // Specify the HTTP method
           headers: {
